@@ -20,7 +20,7 @@ urlpatterns = [
     path(route='add_review', view=views.add_review, name='add_review'),
 
     # car path
-    path(route='get_cars', view=views.get_cars, name ='getcars'),
+    path(route='get_cars', view=views.get_cars, name ='get_cars'),
 
     # path for dealerships
     path(route='get_dealers', view=views.get_dealerships, name='get_dealers'),
