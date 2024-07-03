@@ -91,6 +91,7 @@ def get_dealer_reviews(request, dealer_id):
         endpoint = "/fetchReviews/dealer/"+str(dealer_id)
         reviews = get_request(endpoint)
         for review_detail in reviews:
+            print(review_detail)
             response = analyze_review_sentiments(review_detail['review'])
             review_detail['sentiment'] = response['sentiment']
         return JsonResponse({"status": 200, "reviews": reviews})
@@ -128,7 +129,6 @@ def add_review(request):
 
 def get_cars(request):
     count = CarMake.objects.filter().count()
-    print(count)
     if (count == 0):
         initiate()
     car_models = CarModel.objects.select_related('car_make')
