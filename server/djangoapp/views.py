@@ -116,7 +116,12 @@ def add_review(request):
             response = post_review(data)
             return JsonResponse({"status": 200, "message": response})
         except Exception as e:
-            return JsonResponse({"status": 401, "message": f"Error in posting review: {str(e)}"})
+            return JsonResponse(
+                {
+                    "status": 401,
+                    "message": f"Error in posting review: {str(e)}"
+                }
+            )
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
 
@@ -131,7 +136,7 @@ def get_cars(request):
     for car_model in car_models:
         cars.append(
             {
-                "CarModel": car_model.name, 
+                "CarModel": car_model.name,
                 "CarMake": car_model.car_make.name
             }
         )
